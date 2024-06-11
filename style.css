@@ -9,6 +9,9 @@ body{
     height: 100vh;
     background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
 }
+#main-container{
+    padding-top: 20px;
+}
 #form{
     display: flex;
     flex-direction: right;
@@ -22,4 +25,35 @@ body{
 }
 #form input{
     width: 100px;
+    border:none;
+    border-radius: 5px;
+    box-shadow: 2px 2px rgb(174, 173, 173);
 }
+
+#btns-div{
+    display: flex;
+flex-direction: right;
+justify-content: center;
+margin-top: 20px;
+}
+button:active{
+    transform: translate(2px, 2px);
+    background-color:#6b0dca50;
+}
+button{
+    width: 100px;
+    height: 30px;
+    background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
+    border:none;
+    margin-top: 20px;
+    margin-left: 5%;
+    box-shadow: 2px 3px 5px 2px grey;
+    }
+
+hr{
+        height:2px;
+        background-color:black;
+     }
+hr:hover{
+        display: none;
+     }
