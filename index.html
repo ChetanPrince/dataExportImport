@@ -1,15 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataExportImport</title>
-    <link rel="stylesheet" href="style.css" class="style">
+<!--Index.html-->
+<!DOCTYPE html> 
+<html lang="en"> 
 
-</head>
-<body>
-    
+<head> 
+	<meta charset="UTF-8"> 
+	<meta name="viewport"
+		content="width=device-width, 
+				initial-scale=1.0"> 
+	<title>CSV Viewer</title> 
+	<link rel="stylesheet" href="style.css"> 
+</head> 
 
-    <script src="script.js"></script>
-</body>
+<body> 
+	<div id="main-container">
+        <form id="form">
+            <label for="name-input">First Name</label>
+            <input type="text" id="name-input">
+            
+            <label for="surname-input">Surname</label>
+            <input type="text" id="surname-input">
+            
+            <label for="email-input">Email</label>
+            <input type="text" id="email-input">
+            
+            <label for="contact-input">Contact</label>
+            <input type="text" id="contact-input">
+
+        </form>
+
+    </div>
+    <div id="output">
+        <table id="table">
+            <thead id="thead">
+                <tbody id="tbody">
+                    
+                </tbody>
+            </thead>
+        </table>
+    </div>
+	<script src="script.js"></script> 
+</body> 
+
 </html>
