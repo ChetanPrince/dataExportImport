@@ -3,14 +3,12 @@ const tbody = document.getElementById("tbody");
 
 
 const saveData = () =>{formInput.forEach(input =>{
-    input.addEventListener("blur", e =>{
-        let tr = document.createElement("tr");
-        tbody.appendChild(tr);
-        let col = document.createElement("td");
-        tr.appendChild(col);
-
-        col += input.value;
-        console.log(col);
+       let td1 = formInput[0].value,
+       td2 = formInput[1].value,
+       td3 = formInput[2].value,
+       td4 = formInput[3].value;
+        tbody.innerHTML = `<tr><td>${td1}</td><td>${td2}</td><td>${td3}</td><td>${td4}</td></tr>`;
+       console.log(formInput[0].value)
 })
 
             // Now we have a problem here when first input is empty then function does not operate and when another field input is not filled then only the continuous filled input is picked and loop is run for four times for that single loop
@@ -33,11 +31,11 @@ const saveData = () =>{formInput.forEach(input =>{
 //     }
         // }
       
-formInput[0].value = "";
-formInput[1].value = "";
-formInput[2].value = "";
-formInput[3].value = "";
+// formInput[0].value = "";
+// formInput[1].value = "";
+// formInput[2].value = "";
+// formInput[3].value = "";
     // })
-})}
+}
 const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", saveData);
