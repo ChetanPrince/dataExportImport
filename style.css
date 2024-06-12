@@ -57,3 +57,13 @@ hr{
 hr:hover{
         display: none;
      }
+#table{
+    display:flex;
+    justify-content:center;
+    margin-top: 20px;
+}
+
+     #table tr td{
+        border: 1px solid black;
+
+     }
