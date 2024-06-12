@@ -8,9 +8,10 @@ const saveData = () =>{formInput.forEach(input =>{
         let tr = document.createElement("tr");
         tbody.appendChild(tr);
         for(let i=0; i<formInput.length; i++){
+            
             let col = document.createElement("td");
             col.textContent = formInput[i].value;
-            console.log(formInput.length);
+            console.log(i);
             tr.appendChild(col);
     //  col.innerHTML += `<td>${formInput[i].value}</td>`;
             
