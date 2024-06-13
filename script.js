@@ -6,6 +6,22 @@ const tbody = document.getElementById("tbody");
 //  instead we need the form to save data once each input field is filled correctly and save btn is pressed then dynamically the data should correspond to its required cell.
 // firstly we need tr with th that claims their corresponding cells which should be hidden at first but after getting their first values should be visible
 
+// Crud operations firstly store inputs in a variable
+function getData(){
+    let formData = {};
+formData["nameInput"] = document.getElementById("name-input");
+formData["surnameInput"] = document.getElementById("surname-input");
+formData["emailInput"] = document.getElementById("email-input");
+formData["contactInput"] = document.getElementById("contact-input");
+return formData;
+}
+
+
+
+
+
+
+
 
 const saveData = () =>{
        let td1 = formInput[0].value,

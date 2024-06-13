@@ -62,12 +62,17 @@ hr:hover{
     justify-content:center;
     margin-top: 20px;
 }
-
-     #table, tr th, tr td{
-      width:80%;
+#table{
+    width:80%;
+    display: flex;
+    margin-left: 10%;
+    padding: 20px;
+    border: 2px solid black;
+}
+     #table tr th, td{
+      width:100%;
         justify-content: center;
         margin-left: 10%;
         padding: 10px;
-
         border: 2px solid black;
      }
