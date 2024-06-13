@@ -63,7 +63,11 @@ hr:hover{
     margin-top: 20px;
 }
 
-     #table tr td{
-        border: 1px solid black;
+     #table, tr th, tr td{
+      width:80%;
+        justify-content: center;
+        margin-left: 10%;
+        padding: 10px;
 
+        border: 2px solid black;
      }

@@ -1,6 +1,7 @@
 const formInput = document.querySelectorAll("#form input");
 const tbody = document.getElementById("tbody");
 
+
 // hardCoding formInput[0] value to sequential tds
 //  instead we need the form to save data once each input field is filled correctly and save btn is pressed then dynamically the data should correspond to its required cell.
 // firstly we need tr with th that claims their corresponding cells which should be hidden at first but after getting their first values should be visible
