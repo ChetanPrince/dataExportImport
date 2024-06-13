@@ -9,32 +9,28 @@ const tbody = document.getElementById("tbody");
 // Crud operations firstly store inputs in a variable
 function getData(){
     let formData = {};
-formData["nameInput"] = document.getElementById("name-input");
-formData["surnameInput"] = document.getElementById("surname-input");
-formData["emailInput"] = document.getElementById("email-input");
-formData["contactInput"] = document.getElementById("contact-input");
+formData["nameInput"] = document.getElementById("name-input").value;
+formData["surnameInput"] = document.getElementById("surname-input").value;
+formData["emailInput"] = document.getElementById("email-input").value;
+formData["contactInput"] = document.getElementById("contact-input").value;
 return formData;
 }
 
+const saveData = (data) =>{
+    let table = document.getElementById("table").getElementsByTagName('tbody')[0];
+    let newRow = table.insertRow(table.length);
 
+       let td1 = newRow.insertCell(0);
+       td1.innerHTML = data.nameInput;
+       let td2 = newRow.insertCell(1);
+       td2.innerHTML = data.surNameInput;
+       let td3 = newRow.insertCell(2);
+       td3.innerHTML = data.emailInput;
+       let td4 = newRow.insertCell(3);
+       td4.innerHTML = data.contactInput;
+       let td5 = newRow.insertCell(4);
+       td5.innerHTML = `<button onClick="edit(this)">Edit</button><button onClick="delete(this)">Delete</delete>`;}
 
-
-
-
-
-
-const saveData = () =>{
-       let td1 = formInput[0].value,
-       td2 = formInput[1].value,
-       td3 = formInput[2].value,
-       td4 = formInput[3].value;
-        tbody.innerHTML += `<tr><td>${td1}</td><td>${td2}</td><td>${td3}</td><td>${td4}</td></tr>`;
-       console.log(formInput[0].value)
-        formInput[0].value="";
-        formInput[1].value="";
-        formInput[2].value="";
-        formInput[3].value="";
-}
 
 const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", saveData);
