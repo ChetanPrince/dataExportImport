@@ -1,7 +1,7 @@
 const formInput = document.querySelectorAll("#form input");
 const tbody = document.getElementById("tbody");
 
-let selectedRow = null
+let selectedRow = null;
 
 function onFormSubmit(e) {
 	e.preventDefault();
@@ -15,31 +15,41 @@ function onFormSubmit(e) {
         resetForm();    
 }
 
+let formData = [];
 // Crud operations firstly store inputs in a variable
 function getData(){
-    let formData = {};
-formData["nameInput"] = document.getElementById("name-input").value;
-formData["surnameInput"] = document.getElementById("surname-input").value;
-formData["emailInput"] = document.getElementById("email-input").value;
-formData["contactInput"] = document.getElementById("contact-input").value;
+let nameInput = document.getElementById("name-input").value;
+let surnameInput= document.getElementById("surname-input").value;
+let emailInput  = document.getElementById("email-input").value;
+let contactInput = document.getElementById("contact-input").value;
+ // Store the values in an object
+ const data = {
+    nameInput: nameInput,
+    surnameInput: surnameInput,
+    emailInput: emailInput,
+    contactInput: contactInput
+};
+
+// Push the object into the array
+formData.push(data);
 return formData;
 }
 
-function saveData(data){
-    let table = document.getElementById("table").getElementsByTagName('tbody')[0];
+function saveData(formData){
+    let table = document.getElementById("table").getElementsByTagName("tbody")[0];
     let newRow = table.insertRow(table.length);
 
        let td1 = newRow.insertCell(0);
-       td1.innerHTML = data.nameInput;
+       td1.innerHTML = formData.nameInput;
        let td2 = newRow.insertCell(1);
-       td2.innerHTML = data.surnameInput;
+       td2.innerHTML = formData.surnameInput;
        let td3 = newRow.insertCell(2);
-       td3.innerHTML = data.emailInput;
+       td3.innerHTML = formData.emailInput;
        let td4 = newRow.insertCell(3);
-       td4.innerHTML = data.contactInput;
+       td4.innerHTML = formData.contactInput;
        let td5 = newRow.insertCell(4);
        td5.innerHTML = `<button onClick="edit(this)">Edit</button><button onClick="delete(this)">Delete</delete>`;}
 
 
-// const saveBtn = document.getElementById("save");
-// saveBtn.addEventListener("click", saveData());
+const saveBtn = document.getElementById("save");
+saveBtn.addEventListener("click", saveData());
