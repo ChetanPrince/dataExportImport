@@ -41,13 +41,15 @@ button:active{
     background-color:#6b0dca50;
 }
 button{
-    width: 100px;
+    width: 7rem;
     height: 30px;
     background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
     border:none;
+    border-radius: 7px;
     margin-top: 20px;
     margin-left: 5%;
     box-shadow: 2px 3px 5px 2px grey;
+    cursor : pointer;
     }
 
 hr{
@@ -67,8 +69,8 @@ hr:hover{
     border: 2px solid black;
 }
      #table tr th, td{
-      width:100%;
+      
         margin-left: 10%;
-        padding: 10px;
-        border: 2px solid black;
+        padding: 6px;
+        border: 1px solid black;
      } 

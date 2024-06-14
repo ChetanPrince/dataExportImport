@@ -44,6 +44,19 @@ function saveData(formData){
     actionCell.innerHTML = `<button onClick="edit(this)" id="edit">Edit</button><button id="delete" onClick="delete(this)">Delete</button>`;
 }
 
+// need to design function edit where particular index o frow is selected and input fields are filled with corresponding data then upon saving data should be saved back to its original row index
+
+
+
+
+
+//  need to write function delete where total data is deleted and data is looked for that index of row at first and then an alert should be shown means to confirm the delete warning user to not be able to retrieve data once deleted
+
+
+
+
+
+
     // use keys array to store names of the variables and then for each key with properties key and index create new cell at the index and use formdata key to write innerHTML
        
     //  reset Form function is written
