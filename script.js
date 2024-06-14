@@ -41,11 +41,26 @@ function saveData(formData){
         td.innerHTML = formData[key];
     });
     let actionCell = row.insertCell(keys.length);
-    actionCell.innerHTML = `<button onClick="edit(this)" id="edit">Edit</button><button id="delete" onClick="delete(this)">Delete</button>`;
+    actionCell.innerHTML = `<button onClick="edit(this)" class="edit">Edit</button><button class="delete" onClick="delete(this)">Delete</button>`;
 }
 
 // need to design function edit where particular index o frow is selected and input fields are filled with corresponding data then upon saving data should be saved back to its original row index
+function edit(td){
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("name-input").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("surname-input").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("email-input").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("contact-input").value = selectedRow.cells[3].innerHTML;
+ }
 
+ function updateForm(formData){
+    selectedRow.cells[0].innerHTML = formData.name;
+    selectedRow.cells[1].innerHTML = formData.surname;
+    selectedRow.cells[2].innerHTML = formData.email;
+    selectedRow.cells[3].innerHTML = formData.contact;
+    selectedRow = null;
+    
+ }
 
 
 
