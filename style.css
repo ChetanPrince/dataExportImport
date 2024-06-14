@@ -58,21 +58,17 @@ hr:hover{
         display: none;
      }
 #table{
-    display:flex;
-    justify-content:center;
-    margin-top: 20px;
+    margin-top: 2s0px;
 }
 #table{
     width:80%;
-    display: flex;
     margin-left: 10%;
     padding: 20px;
     border: 2px solid black;
 }
      #table tr th, td{
       width:100%;
-        justify-content: center;
         margin-left: 10%;
         padding: 10px;
         border: 2px solid black;
-     }
+     } 
