@@ -67,3 +67,31 @@ if(confirm("Are you sure to delete the record?")){
 
 const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", onFormSubmit);
+
+
+// Now we need to export data as csv content
+
+// created a function that downloads a file when clicked
+function exportData(){
+  
+    let rows = document.querySelectorAll("#table tr");
+       let csvContent = "";
+        rows.forEach(row =>{
+        let cols = document.querySelectorAll("td th");
+        let rowContent = Array.from(cols).map(col=>col.textContent).join(",");
+        csvContent += rowContent + "\n";
+    });
+           
+        const blob = new Blob([csvContent], {type:"text/csv"});
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "download_data.csv";
+        document.body.appendChild(a);            
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+            }
+
+const exportDataBtn = document.getElementById("export");
+exportDataBtn.addEventListener("click", exportData);
