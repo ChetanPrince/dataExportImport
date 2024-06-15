@@ -56,6 +56,13 @@ function updateForm(formData){
     selectedRow.cells[3].innerHTML = formData["contact"];
     selectedRow = null;
 }
+function deleteRow(td){
+if(confirm("Are you sure to delete the record?")){
+    row = td.parentElement.parentElement;
+    document.getElementById("table").deleteRow(row.rowIndex);
+    resetForm;
+}
+}
 
 
 const saveBtn = document.getElementById("save");
