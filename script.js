@@ -77,7 +77,7 @@ function exportData(){
     let rows = document.querySelectorAll("#table tr");
        let csvContent = "";
         rows.forEach(row =>{
-        let cols = document.querySelectorAll("td th");
+        let cols = row.querySelectorAll("td, th");
         let rowContent = Array.from(cols).map(col=>col.textContent).join(",");
         csvContent += rowContent + "\n";
     });
