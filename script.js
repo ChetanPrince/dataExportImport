@@ -107,7 +107,7 @@ function importFromCSV(file){
         rows.forEach(row => {
             if (row.length >= 4){
                 let newRow = table.insertRow();
-                row.forEach((cell, index_ => {
+                row.forEach((cell, index) => {
                     let td = newRow.insertCell(index);
                     td.innerHTML = cell;
 
@@ -115,8 +115,18 @@ function importFromCSV(file){
             let actionCell = newRow.insertCell(index);
                 actionCell.innerHTML = `<button onClick="onEdit(this)">Edit</button>
                                         <button onClick="deleteRow(this)">Delete</button>`;
-        )
-            }
-        })
-    }
+                 }
+        });
+    };
+    reader.readAsText(file);
 }
+
+
+const importBTN = document.getElementById("import");
+importBTN.addEventListener("click", () => {
+    const csvFileInput = document.getElementById("csvFileInput");
+    const file = csvFileInput.files[0];
+    if(file){
+        importFromCSV(file);
+    }
+});
