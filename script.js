@@ -105,16 +105,24 @@ function importFromCSV(file){
         table.innerHTML = "";
 
         rows.forEach(row => {
-            if (row.length >= 4){
+            if (row.length >= 5){
                 let newRow = table.insertRow();
                 row.forEach((cell, index) => {
                     let td = newRow.insertCell(index);
                     td.innerHTML = cell;
 
                 });
-            let actionCell = newRow.insertCell(row.length);
+            let actionCell = newRow.cells[newRow.cells.length - 1];
+            let actions = actionCell.innerHTML.split(" ");
+            if(actions.length >= 2){
+                actionCell.innerHTML = `<button onClick="onEdit(this)">${actions[0]}</button>
+                <button onClick="deleteRow(this)">${actions[0]}</button>`;
+                }
+                else{
                 actionCell.innerHTML = `<button onClick="onEdit(this)">Edit</button>
-                                        <button onClick="deleteRow(this)">Delete</button>`;
+                <button onClick="deleteRow(this)">Delete</button>`;
+
+            }
                  }
         });
     };
