@@ -95,3 +95,28 @@ function exportData(){
 
 const exportDataBtn = document.getElementById("export");
 exportDataBtn.addEventListener("click", exportData);
+
+function importFromCSV(file){
+    const reader = new FileReader();
+    reader.onload = function(event){
+        const text = event.target.result;
+        const rows = text.split("\n").map(row => row.split(","));
+        const table = document.getElementById("table").getElementsByTagName("tbody")[0];
+        table.innerHTML = "";
+
+        rows.forEach(row => {
+            if (row.length >= 4){
+                let newRow = table.insertRow();
+                row.forEach((cell, index_ => {
+                    let td = newRow.insertCell(index);
+                    td.innerHTML = cell;
+
+                });
+            let actionCell = newRow.insertCell(index);
+                actionCell.innerHTML = `<button onClick="onEdit(this)">Edit</button>
+                                        <button onClick="deleteRow(this)">Delete</button>`;
+        )
+            }
+        })
+    }
+}
