@@ -60,7 +60,7 @@ function deleteRow(td){
 if(confirm("Are you sure to delete the record?")){
     row = td.parentElement.parentElement;
     document.getElementById("table").deleteRow(row.rowIndex);
-    resetForm;
+    resetForm();
 }
 }
 
@@ -77,7 +77,8 @@ function exportData(){
     let rows = document.querySelectorAll("#table tr");
        let csvContent = "";
         rows.forEach(row =>{
-        let cols = row.querySelectorAll("td, th");
+            const cols = Array.from(row.querySelectorAll('td, th'));
+        cols.pop();
         let rowContent = Array.from(cols).map(col=>col.textContent).join(",");
         csvContent += rowContent + "\n";
     });
@@ -96,34 +97,38 @@ function exportData(){
 const exportDataBtn = document.getElementById("export");
 exportDataBtn.addEventListener("click", exportData);
 
-function importFromCSV(file){
+function importFromCSV(file) {
     const reader = new FileReader();
-    reader.onload = function(event){
+    reader.onload = function (event) {
         const text = event.target.result;
         const rows = text.split("\n").map(row => row.split(","));
         const table = document.getElementById("table").getElementsByTagName("tbody")[0];
         table.innerHTML = "";
 
         rows.forEach(row => {
-            if (row.length >= 5){
+            if (row.length >= 4) {
                 let newRow = table.insertRow();
                 row.forEach((cell, index) => {
                     let td = newRow.insertCell(index);
                     td.innerHTML = cell;
-
                 });
-            let actionCell = newRow.cells[newRow.cells.length - 1];
-            let actions = actionCell.innerHTML.split(" ");
-            if(actions.length >= 2){
-                actionCell.innerHTML = `<button onClick="onEdit(this)">${actions[0]}</button>
-                <button onClick="deleteRow(this)">${actions[0]}</button>`;
-                }
-                else{
-                actionCell.innerHTML = `<button onClick="onEdit(this)">Edit</button>
-                <button onClick="deleteRow(this)">Delete</button>`;
 
+                if (row.length === 5) {
+                    let actionCell = newRow.cells[newRow.cells.length - 1];
+                    let actions = actionCell.innerHTML.split(" ");
+                    if (actions.length >= 2) {
+                        actionCell.innerHTML = `<button onClick="edit(this)">${actions[0]}</button>
+                                                <button onClick="deleteRow(this)">${actions[1]}</button>`;
+                    } else {
+                        actionCell.innerHTML = `<button onClick="edit(this)">Edit</button>
+                                                <button onClick="deleteRow(this)">Delete</button>`;
+                    }
+                } else {
+                    let actionCell = newRow.insertCell(newRow.cells.length);
+                    actionCell.innerHTML = `<button onClick="edit(this)">Edit</button>
+                                            <button onClick="deleteRow(this)">Delete</button>`;
+                }
             }
-                 }
         });
     };
     reader.readAsText(file);

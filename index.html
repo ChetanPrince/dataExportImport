@@ -14,37 +14,50 @@
 <body> 
 	<div id="main-container">
         <form id="form">
-            <label for="name-input">First Name</label>
-            <input type="text" id="name-input">
-            
-            <label for="surname-input">Surname</label>
-            <input type="text" id="surname-input">
-            
-            <label for="email-input">Email</label>
-            <input type="text" id="email-input">
-            
-            <label for="contact-input">Contact</label>
-            <input type="text" id="contact-input">
+        <table>
+            <tr><td>
+                    <label for="name-input">First Name</label>
+                    <input type="text" id="name-input">
+                    </td>
+                    <td>
+                        <label for="email-input">Email</label>
+                <input type="text" id="email-input">
+                    </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr><td> 
 
+                <label for="surname-input">Surname</label>
+                        <input type="text" id="surname-input">
+                    </td>
+                    <td>
+                        <label for="contact-input">Contact</label>
+                        <input type="text" id="contact-input">
+                    </td>
+            </tr>
+            </table>
         </form>
 
     </div>
-    <div id="btns-div">
+    <div class="btns-div">
         <button id="save">Save</button>
         <button id="export">Export</button>        
-    </div><br>
-    <div class="centerdiv"><input type="file" id="csvFileInput" accept=".csv">
-        <button id="import">Import CSV</button></div><br>
-    <hr>
+        </div><br>
+        <hr>
+    <div class="btns-div">
+        <input type="file" id="csvFileInput" accept=".csv">
+        <label for="csvFileInput" class="custom-file-upload">Choose File</label>
+        <button id="import">Import CSV</button>
+        </div><br><br><hr><br>
     <div id="output">
         <table id="table">
             <thead id="thead">
                 <tr><th>First Name</th><th>Surname</th><th>Email</th><th>Contact</th><th>Modify</th></tr>
                 </thead>
-                
                 <tbody id="tbody">
-                    <tr><td>Satinder</td><td>Sartaj</td><td>sati@gmail.com</td><td>643112565</td></tr>
-
+                  
                 </tbody>
         </table>
     </div>
