@@ -112,7 +112,7 @@ function importFromCSV(file){
                     td.innerHTML = cell;
 
                 });
-            let actionCell = newRow.insertCell(index);
+            let actionCell = newRow.insertCell(row.length);
                 actionCell.innerHTML = `<button onClick="onEdit(this)">Edit</button>
                                         <button onClick="deleteRow(this)">Delete</button>`;
                  }
@@ -122,8 +122,8 @@ function importFromCSV(file){
 }
 
 
-const importBTN = document.getElementById("import");
-importBTN.addEventListener("click", () => {
+const importBtn = document.getElementById("import");
+importBtn.addEventListener("click", () => {
     const csvFileInput = document.getElementById("csvFileInput");
     const file = csvFileInput.files[0];
     if(file){

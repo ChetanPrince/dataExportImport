@@ -12,6 +12,10 @@ body{
 #main-container{
     padding-top: 20px;
 }
+.centerdiv{
+    display: flex;
+    justify-content: center;
+}
 #form{
     display: flex;
     flex-direction: right;
