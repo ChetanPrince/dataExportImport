@@ -1,0 +1,1 @@
+const firstName = document.getElementById("name-input");
