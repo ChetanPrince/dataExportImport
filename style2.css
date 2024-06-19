@@ -13,16 +13,16 @@ body{
     margin-left: 10%;
     width: 80%;
     border: 2px solid black;
+    border-spacing: 10px;
     }
 .tdm{
         border: 1px solid grey;
-        width: 10%;
+        width: 30%;
         margin-right: 10px;
         /* border-left: 1px solid grey; */
     }
 td,th{
     padding:10px;
-
     }
                 
 input{
