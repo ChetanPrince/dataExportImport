@@ -1,51 +1,51 @@
 *{
-	margin:0;
-padding: 0;
-}
+    margin:0;
+    padding: 0;
+    }
 body{
-	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	width: 100%;
-	/* display: flex;
-	flex-direction: row; */
-justify-content: center;
-/* flex-wrap: wrap; */
-background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
-}
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
+    }
 #table{
     margin-top: 20px;
-    width: 100%;
-}
+    margin-left: 10%;
+    width: 80%;
+    border: 2px solid black;
+    }
+.tdm{
+        border: 1px solid grey;
+        width: 10%;
+        margin-right: 10px;
+        /* border-left: 1px solid grey; */
+    }
+td,th{
+    padding:10px;
 
-.tdm, td,th{
-margin-top: 20px;
-padding:10px;
-border: 2px solid black;
-border-radius: 7px;
-}
-#btns td, #form td{
-border: none;
-}
+    }
+                
 input{
-border: none;
-border-radius: 5px;
-}
-
+        border: none;
+        border-radius: 5px;
+        }
+                    
 button{
-	width: 7rem;
-	height: 2rem;
-	margin-left: 10px;
-	border: none;
-	border-radius: 7px;
-	box-shadow: 2px 3px 5px 2px grey;
-	background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
-	cursor: pointer;
-}
-
+        width: 7rem;
+        height: 2rem;
+        margin-left: 10px;
+        border: none;
+        border-radius: 7px;
+        box-shadow: 2px 3px 5px 2px grey;
+        background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
+        cursor: pointer;
+        }
+        
 button:active{
-	transform: translate(2px, 2px);
-	background: #6b0dca50;
-}
-
+            transform: translate(2px, 2px);
+            background: #6b0dca50;
+            }
+            
 label, input{
-cursor: pointer;
-}
+            cursor: pointer;
+            }
