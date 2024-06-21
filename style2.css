@@ -49,3 +49,22 @@ button:active{
 label, input{
             cursor: pointer;
             }
+
+#csvFileInput{
+    opacity:0;
+    position: absolute;
+    z-index: -1;
+}
+.csvFileInput{
+    font-family: Arial;
+    font-size: 13.3333px;
+    font-stretch: 100%;
+    display: inline-block;
+    padding: 7px 14px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 2px 3px 5px 2px grey;
+    background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
+    cursor: pointer;
+}
