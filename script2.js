@@ -65,5 +65,13 @@ function deleteRow(td){
         resetForm();
     }
 }
+function exportData(){
+
+}
+
+
+const exportBtn = document.getElementById("export");
+exportBtn.addEventListener("click", exportData());
+
 const btn = document.getElementById("save");
 btn.addEventListener("click", submitForm);
