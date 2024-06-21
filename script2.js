@@ -65,25 +65,7 @@ function deleteRow(td){
         resetForm();
     }
 }
-function exportData(){
-    let rows = document.querySelectorAll("#table2 tr");
-    let csvContent = "";
-    rows.forEach(row =>{
-        const cols = Array.from(row.querySelectorAll("td, th"));
-        cols.pop();
-        let rowsContent = Array.from(cols).map(col=> col.textContent).join(",");
-        csvContent += rowsContent + "\n";
-    });
-    const blob = new Blob([csvContent], {type:"text/csv"});
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "download.csv";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-}
+
 
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
