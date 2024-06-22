@@ -86,53 +86,7 @@ function exportData(){
     window.URL.revokeObjectURL(url);
 }
 
-function importCsv(file){
-const reader = new FileReader();
-reader.onload = function (event) {
 
-    const text = event.target.result;
-    const rows = text.split("\n").map(row=> row.split(","));
-    const table = document.getElementById("table2").getElementsByTagName("tbody")[0];
-    table.innerHTML ="";
-    rows.forEach(row => {
-        if(row.length >= 4){
-            let newRow = table.insertRow();
-            row.forEach((cell, index) => {
-                let td = newRow.insertCell(index);
-                td.innerHTML = cell;
-            });
-        
-    if(row.length === 5){
-            let actionCell = newRow.cells[newRow.cells.length-1];
-            let action = actionCell.innerHTML.split(" ");
-            if (action.length >= 2){
-                actionCell.innerHTML = `<button id="edit" onClick="edit(this)">${action[0]}</button><button id="delete" onClick="deleteRow(this)">${action[1]}</button>`;
-            }
-            else{
-                actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
-            }
-        }
-        
-        else{
-            let actionCell = newRow.insertCell(newRow.cells.length);
-            actionCell.innerHTML =`<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
-        }
-    }
-
-    });
-};
-reader.readAsText(file);
-}
-
-const importBtn = document.getElementById("import");
-importBtn.addEventListener("click", ()=>{
-    const csvFileInput = document.getElementById("csvFileInput");
-    const file = csvFileInput.files[0];
-
-    if(file){
-        importCsv(file);
-    }
-} );
 
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
