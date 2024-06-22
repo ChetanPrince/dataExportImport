@@ -101,7 +101,7 @@ reader.onload = function (event) {
                 let td = newRow.insertCell(index);
                 td.innerHTML = cell;
             });
-        }
+        
     if(row.length === 5){
             let actionCell = newRow.cells[newRow.cells.length-1];
             let action = actionCell.innerHTML.split(" ");
@@ -112,11 +112,12 @@ reader.onload = function (event) {
                 actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
             }
         }
+        
         else{
             let actionCell = newRow.insertCell(newRow.cells.length);
             actionCell.innerHTML =`<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
         }
-
+    }
 
     });
 };
