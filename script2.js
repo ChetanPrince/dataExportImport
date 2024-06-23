@@ -86,7 +86,28 @@ function exportData(){
     window.URL.revokeObjectURL(url);
 }
 
+function importCsv(file){
+    const reader = new FileReader();
+    reader.onload = function (event){
+        const text = event.target.result;
+        const rows = text.split("\n").map(row => row.split(","));
+        const table = document.getElementById("table2").getElementsByTagName("tbody")[0];
+        table.textContent = "";
+        rows.forEach(row =>{
+            if(rows.length >= 4){
+                let newRow = table.insertRow();
+                row.forEach((cell, index)=>{
+                    let actionCell = newRow.insertCell(index);
+                    let action = 
 
+
+                })
+
+        })
+
+        }
+    }
+}
 
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
