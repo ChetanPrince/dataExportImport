@@ -94,12 +94,18 @@ function importCsv(file){
         const table = document.getElementById("table2").getElementsByTagName("tbody")[0];
         table.textContent = "";
         rows.forEach(row =>{
-            if(rows.length >= 4){
+            if(row.length >= 4){
                 let newRow = table.insertRow();
                 row.forEach((cell, index)=>{
-                    let actionCell = newRow.insertCell(index);
-                    let action = 
-
+                    let td = newRow.insertCell(index);
+                    td.innerHTML = cell;});
+                if(row.length === 5){
+                    let actionCell = newRow.cells[newRow.cells.length - 1];
+                    let actions = actionCell.innerHTML.split(" ");
+                    if(actions.length >= 2){
+                        actionCell.innerHTML = `<button onClick="edit(this)" id="edit">${actions[0]}</button><button onClick="deleteRow(this)" id="delete">${actions[1]}</button>`
+                    }
+                    }
 
                 })
 
