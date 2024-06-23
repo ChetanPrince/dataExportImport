@@ -104,15 +104,17 @@ function importCsv(file){
                     let actions = actionCell.innerHTML.split(" ");
                     if(actions.length >= 2){
                         actionCell.innerHTML = `<button onClick="edit(this)" id="edit">${actions[0]}</button><button onClick="deleteRow(this)" id="delete">${actions[1]}</button>`
-                    }
-                    }
+                        }
+                        else{
+                        actionCell.innerHTML = `<button onClick="edit(this)" id="edit">Edit</button><button onClick="deleteRow(this)" id="delete">Delete</button>`
+                        }}                        
+            else{
+                actionCell.innerHTML = `<button onClick="edit(this)" id="edit">Edit</button><button onClick="deleteRow(this)" id="delete">Delete</button>`
+                }}
 
-                })
-
-        })
-
-        }
-    }
+        });
+    };
+reader.readAsText(file);
 }
 
 const exportBtn = document.getElementById("export");
