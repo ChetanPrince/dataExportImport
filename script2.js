@@ -117,6 +117,12 @@ function importCsv(file){
 reader.readAsText(file);
 }
 
+const importBtn = document.getElementById("import");
+importBtn.addEventListener("click", ()=>
+{
+    
+})
+
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
 
