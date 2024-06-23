@@ -123,7 +123,7 @@ importBtn.addEventListener("click", ()=>
     const csvFileInput = document.getElementById("csvFileInput");
     const file = csvFileInput.files[0];
     if(file){
-
+        importCsv(file);
     }
 });
 
