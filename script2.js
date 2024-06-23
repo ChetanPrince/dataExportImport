@@ -121,6 +121,7 @@ const importBtn = document.getElementById("import");
 importBtn.addEventListener("click", ()=>
 {
     const csvFileInput = document.getElementById("csvFileInput");
+    const file = csvFileInput.files[0];
 })
 
 const exportBtn = document.getElementById("export");
