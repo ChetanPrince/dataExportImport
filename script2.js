@@ -120,7 +120,7 @@ reader.readAsText(file);
 const importBtn = document.getElementById("import");
 importBtn.addEventListener("click", ()=>
 {
-    
+    const csvFileInput = document.getElementById("csvFileInput");
 })
 
 const exportBtn = document.getElementById("export");
