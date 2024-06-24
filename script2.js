@@ -20,7 +20,7 @@ function getData(){
     }
 }
 function saveData(getData){
-
+let table =  document.getElementById("table2").getElementsByTagName("tbody")[0];
 }
 
 
