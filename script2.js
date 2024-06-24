@@ -19,3 +19,10 @@ function getData(){
         contact: document.getElementById("contact-input").value
     }
 }
+function saveData(getData){
+
+}
+
+
+let saveBtn = document.getElementById("save");
+saveBtn.addEventListener("click", onSubmitForm(formData));
