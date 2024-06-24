@@ -27,8 +27,9 @@ keys.forEach((key, index) => {
     let td = rows.insertCell(index);
     td.innerHTML = formData[key];
 });
+let actionCell = newRow.insertCell(keys.length);
+    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
 }
 
-
 let saveBtn = document.getElementById("save");
-saveBtn.addEventListener("click", onSubmitForm(getData));
+saveBtn.addEventListener("click", onSubmitForm);
