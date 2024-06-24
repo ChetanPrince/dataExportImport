@@ -10,3 +10,12 @@ function onSubmitForm(getData){
     }
     resetData();
 }
+
+function getData(){
+    return{
+        name : document.getElementById("name-input").value,
+        surname : document.getElementById("surname-input").value,
+        email:document.getElementById("email-input").value,
+        contact: document.getElementById("contact-input").value
+    }
+}
