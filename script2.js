@@ -31,5 +31,15 @@ let actionCell = newRow.insertCell(keys.length);
     actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
 }
 
+function resetForm(){
+    document.getElementById("name-input").value = "";
+    document.getElementById("surname-input").value = "";
+    document.getElementById("email-input").value = "";
+    document.getElementById("contact-input").value = "";
+    selectedRow = null;
+}
+
+
+
 let saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", onSubmitForm);
