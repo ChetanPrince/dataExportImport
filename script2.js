@@ -61,7 +61,14 @@ function updateData(formData){
        selectedRow = null;
 }
 
+function exportData(){}
+function importData(){
 
+
+}
+
+
+const exportBtn = document.getElementById("export");
 
 
 let saveBtn = document.getElementById("save");
