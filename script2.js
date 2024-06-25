@@ -50,7 +50,7 @@ function deleteRow(td){
     if(confirm("Are you sure you want to delete this record")){
         row = td.parentElement.parentElement;
         document.getElementById("table2").deleteRow(row.rowIndex);
-        resetForm();
+        resetData();
     }
 }
 function updateData(formData){
