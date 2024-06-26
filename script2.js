@@ -61,7 +61,25 @@ function updateData(formData){
        selectedRow = null;
 }
 
-function exportData(){}
+function exportData(){
+    let rows = document.querySelectorAll("#table2 tr");
+    let csvContent = "";
+    rows.forEach(row =>{
+        let cols = Array.from(row.querySelectorAll("td, th"));
+        cols.pop();
+        let rowContent = Array.from(cols).map(col => col.textContent).join(",");
+        csvContent += rowContent +"\n";
+    })
+    const blob = new Blob([csvContent], {type:"csv/text"});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download ="download.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(blob);
+}
 function importData(){
 
 
@@ -69,6 +87,10 @@ function importData(){
 
 
 const exportBtn = document.getElementById("export");
+exportBtn.addEventListener("click", exportData);
+const importBtn = document.getElementById("import");
+importBtn.addEventListener("click", ()=>{});
+
 
 
 let saveBtn = document.getElementById("save");

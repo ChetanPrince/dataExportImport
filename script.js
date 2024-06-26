@@ -69,9 +69,6 @@ const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", onFormSubmit);
 
 
-// Now we need to export data as csv content
-
-// created a function that downloads a file when clicked
 function exportData(){
   
     let rows = document.querySelectorAll("#table tr");
