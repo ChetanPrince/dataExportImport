@@ -80,7 +80,18 @@ function exportData(){
     document.body.removeChild(a);
     window.URL.revokeObjectURL(blob);
 }
-function importData(){
+function importData(file){
+    const reader = new FileReader();
+    reader.onload = function (event){
+        const text = event.target.result;
+        let rows = text.split("\n").map(row => row.split(","));
+        let table = document.getElementById("table2").getElementsByTagName("tbody")[0];
+        table.innerHTML ="";
+        
+        rows.forEach(row=>{
+            let td = row.insertCell(row.length);
+        }),
+    }
 
 
 }
