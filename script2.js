@@ -89,8 +89,27 @@ function importData(file){
         table.innerHTML ="";
         
         rows.forEach(row=>{
-            let td = row.insertCell(row.length);
-        }),
+            if(row.length>=4){
+                row.forEach((cell, index)=>{
+                    let newRow =  table.insertRow();
+                    let td = newRow.insertCell(index);
+                    td.innerHTML = cell;
+               });
+               if(row.length === 5){
+                let actionCell = table.insertRow(newRow.cells.length -1);
+                let actions = actionCell.split(" ");
+                if(actions.length >= 2){
+                    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">${actions[0]}</button><button id="delete" onClick="deleteRow(this)">${actions[1]}</button>`;
+                }
+                else{
+                    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
+                }}
+                else{
+                    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
+                }
+        }
+        });
+        reader.readAsText(file);
     }
 
 
@@ -100,7 +119,9 @@ function importData(file){
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
 const importBtn = document.getElementById("import");
-importBtn.addEventListener("click", ()=>{});
+importBtn.addEventListener("click", (file)=>{
+
+});
 
 
 
