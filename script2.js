@@ -42,6 +42,13 @@ function edit(td){
     document.getElementById("email-input").value =selectedRow.cells[2].innerHTML;
     document.getElementById("contact-input").value =selectedRow.cells[3].innerHTML;
 }
+function deleteRow(td){
+    if(confirm("Are you sure you want to delete this record?")){
+        selectedRow = td.parentElement.parentElement;
+        document.getElementById("table2")
+    }
+
+}
 function updateForm(formData){
     selectedRow.cells[0].innerHTML = document.getElementById("name-input").value;
     selectedRow.cells[1].innerHTML = document.getElementById("surname-input").value;
