@@ -26,7 +26,7 @@ function saveData(formData){
         cells.innerHTML = formData[key];
     });
     let actionCell = rows.insertCell(rows.cells.length);
-    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="delete(this)">Delete</button>`
+    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
 }
 function resetForm(formData){
     document.getElementById("name-input").value ="";
@@ -43,9 +43,10 @@ function edit(td){
     document.getElementById("contact-input").value =selectedRow.cells[3].innerHTML;
 }
 function deleteRow(td){
+    selectedRow = td.parentElement.parentElement;
     if(confirm("Are you sure you want to delete this record?")){
-        selectedRow = td.parentElement.parentElement;
-        document.getElementById("table2")
+        document.getElementById("table2").deleteRow(selectedRow.rowIndex);
+        resetForm();
     }
 
 }
@@ -56,6 +57,7 @@ function updateForm(formData){
     selectedRow.cells[3].innerHTML = document.getElementById("contact-input").value;
     selectedRow =null;
 }
+const exportBtn = document.getElementById("export");
 
 
 const saveBtn = document.getElementById("save");
