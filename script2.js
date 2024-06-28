@@ -65,25 +65,25 @@ function importData(file){
     const reader = new FileReader();
     reader.onload = function (event){
         let text = event.target.result;
-        let table = document.getElementById("table2").getElementByTagName("tbody")[0];
+        let table = document.getElementById("table2").getElementsByTagName("tbody")[0];
         table.innerHTML = "";
         let rows = text.split("\n").map(row => row.split(","));
         rows.forEach(row=>{
-            if(row.length>=4){
+            if(row.length >=4){
                 let newRow = table.insertRow();
                 row.forEach((cell, index)=>{
                     let td = newRow.insertCell(index);
                     td.innerHTML = cell;
                 });if(row.length === 5){
-                    let actionCell = newRow.cells(newRow.cells.length-1);
+                    let actionCell = newRow.cells[newRow.cells.length-1];
                     let actions = actionCell.innerHTML.split(" ");
-                    if(actions >= 2){
+                    if(actions.length >= 2){
                         actionCell.innerHTML =`<button id="edit" onClick="edit(this)">${actions[0]}</button><button id="delete" onClick="deleteRow(this)">${actions[1]}</button>`;               }
                         else{
                             actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
                         }}
                         else{
-                            let actionCell = newRow.insertCells(newRow.cells.length-1);
+                            let actionCell = newRow.insertCell(newRow.cells.length);
                             actionCell.innerHTML =`<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
                         }       }
         });
@@ -93,6 +93,7 @@ reader.readAsText(file);
 }
 const exportBtn = document.getElementById("export");
 exportBtn.addEventListener("click", exportData);
+
 const importBtn = document.getElementById("import");
 importBtn.addEventListener("click", ()=>
 {
