@@ -57,8 +57,38 @@ function updateForm(formData){
     selectedRow.cells[3].innerHTML = document.getElementById("contact-input").value;
     selectedRow =null;
 }
-const exportBtn = document.getElementById("export");
 
+function exportData(){
+
+}
+function importData(){
+    const reader = new FileReader();
+    reader.onload = function (event){
+        let text = event.target.result;
+        let table = document.getElementById("table2").getElementByTagName("tbody")[0];
+        table.innerHTML = "";
+        let rows = text.split("\n").map(row => row.split(","));
+        rows.forEach(row=>{
+            if(row.length>=4){
+                let td = Array.from(row)
+            }
+        })
+
+    }
+
+}
+const exportBtn = document.getElementById("export");
+exportBtn.addEventListener("click", exportData);
+const importBtn = document.getElementById("export");
+exportBtn.addEventListener("click", ()=>
+{
+    const csvFileInput = document.getElementById("csvFileInput");
+    let file = csvFileInput.files[0];
+    if(file){
+        importData(file);
+    }
+    
+});
 
 const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", onSubmitForm);
