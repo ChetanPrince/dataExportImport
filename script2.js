@@ -57,53 +57,70 @@ function updateForm(formData){
     selectedRow.cells[3].innerHTML = document.getElementById("contact-input").value;
     selectedRow =null;
 }
-
 function exportData(){
-
+    let rows = document.querySelectorAll("#table2 tr");
+    let csvContent = "";
+    rows.forEach(row=>{
+        let cols = Array.from(row.querySelectorAll("td, th"));
+        cols.pop();
+        let rowContent = Array.from(cols).map(col=>col.textContent).join(",");
+           csvContent += rowContent + "\n";
+    });
+    const blob = new Blob([csvContent], {type:"text/csv"});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href= url;
+    a.download = "download.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(blob);
 }
+const exportBtn  = document.getElementById("export");
+exportBtn.addEventListener("click", exportData);
+
+
 function importData(file){
-    const reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function (event){
         let text = event.target.result;
         let table = document.getElementById("table2").getElementsByTagName("tbody")[0];
         table.innerHTML = "";
         let rows = text.split("\n").map(row => row.split(","));
-        rows.forEach(row=>{
+        rows.forEach(row => {
             if(row.length >=4){
                 let newRow = table.insertRow();
-                row.forEach((cell, index)=>{
+                row.forEach((cell,index)=>{
                     let td = newRow.insertCell(index);
                     td.innerHTML = cell;
-                });if(row.length === 5){
-                    let actionCell = newRow.cells[newRow.cells.length-1];
-                    let actions = actionCell.innerHTML.split(" ");
-                    if(actions.length >= 2){
-                        actionCell.innerHTML =`<button id="edit" onClick="edit(this)">${actions[0]}</button><button id="delete" onClick="deleteRow(this)">${actions[1]}</button>`;               }
-                        else{
-                            actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`;
-                        }}
-                        else{
-                            let actionCell = newRow.insertCell(newRow.cells.length);
-                            actionCell.innerHTML =`<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
-                        }       }
-        });
+                                });
 
+            
+                if(row.length === 5){
+                    let actionCell = newRow.insertCell(newRow.cells.length -1);
+                    let actions = actionCell.split(" ");
+                    if(actions.length >= 2){
+                        actionCell.innerHTML = `<button id="edit" onClick="edit(this)">${actions[0]}</button><button id="delete" onClick="deleteRow(this)">${actions[1]}</button>`
+                    }else{
+                        actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
+                    }
+                }
+                else{
+                    let actionCell = newRow.insertCell(newRow.cells.length);
+                    actionCell.innerHTML = `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
+                }       }       }); 
     }
-reader.readAsText(file);
+    reader.readAsText(file);
 }
-const exportBtn = document.getElementById("export");
-exportBtn.addEventListener("click", exportData);
 
 const importBtn = document.getElementById("import");
-importBtn.addEventListener("click", ()=>
-{
-    const csvFileInput = document.getElementById("csvFileInput");
-    let file = csvFileInput.files[0];
+importBtn.addEventListener("click", ()=>{
+    let csvFile = document.getElementById("csvFileInput");
+    let file = csvFile.files[0];
     if(file){
         importData(file);
     }
-    
-});
+})
 
 const saveBtn = document.getElementById("save");
 saveBtn.addEventListener("click", onSubmitForm);
