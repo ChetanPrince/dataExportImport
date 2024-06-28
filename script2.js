@@ -61,6 +61,24 @@ function getData(){
 
 
     function exportData(){
+        let rows = document.querySelectorAll("#table2 tr");
+        let csvContent = "";
+        rows.forEach(row =>{
+            let td = Array.from(row.querySelectorAll("td, th"));
+            td.pop();
+            let rowContent =Array.from(td).map(td => td.textContent).join(",");
+            csvContent += rowContent+"\n";
+
+        });
+        const blob = new Blob([csvContent], {type:"text/csv"});
+        let url = window.URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "download.csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(blob);
 
     }
     function importData(file){
@@ -78,15 +96,19 @@ function getData(){
                         td.innerHTML = cell;
                     });
                     if(row.length === 5){
-                        let actionCell = newRow.cells(newRow.cells.length-1);
+                        let actionCell = newRow.cells[newRow.cells.length-1];
                         let actions = actionCell.innerHTML.split(" ");
-                        if(actions >= 2){
-                            
+                        if(actions.length >= 2){
+                            actionCell.innerHTML = `<button id="edit" onClick="edit(this)">${actions[0]}</button><button id="delete" onClick="deleteRow(this)">${actions[1]}</button>`
                         }
-                    }
-                }
-            })
-            }
+                        else{
+                 actionCell.innerHTML =  `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
+                        }}
+                        else{
+                            let actionCell = newRow.insertCell(newRow.cells.length);
+                            actionCell.innerHTML =   `<button id="edit" onClick="edit(this)">Edit</button><button id="delete" onClick="deleteRow(this)">Delete</button>`
+                        }}});
+            }; reader.readAsText(file);
 
     }
 
@@ -95,7 +117,7 @@ function getData(){
     exportBtn.addEventListener("click", exportData);
     
     const importBtn = document.getElementById("import");
-    exportBtn.addEventListener("click", ()=>{
+    importBtn.addEventListener("click", ()=>{
         const csvFileInput = document.getElementById("csvFileInput");
         let file = csvFileInput.files[0];
         if(file){
