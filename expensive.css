@@ -34,4 +34,18 @@ body{
 .common:hover{
 background-color: rgba(50, 52, 139, 0.74);
 }
+button{
+    width: 5.5rem;
+    height: 30px;
+    background: linear-gradient(291deg, rgba(255, 255, 0, 0.21) 0%, rgba(0, 188, 212, 0.29) 28%, rgba(238, 130, 238, 0.39) 100%);
+    border:none;
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 2px 3px 5px 2px grey;
+    cursor : pointer;
+    }
+
+
 
