@@ -50,6 +50,20 @@ button:active{
     background-color: #fff;
         transform: translate(2px, 2px);
     }
-
+    #table{
+        margin-top: 20px;
+    }
+    #table{
+        width:80%;
+        margin-left: 10%;
+        padding: 20px;
+        border: 2px solid black;
+    }
+    #table tr th, #table td{
+          
+            margin-left: 10%;
+            padding: 6px;
+            border: 1px solid black;
+         } 
 
 
