@@ -1,16 +1,15 @@
 const button = document.getElementById("addExpense");
+let selectedRow = null;
 button.addEventListener("click", (e)=>{
-    let selectedRow = null;
     e.preventDefault();
     let formData = getValues();
     if(selectedRow == null){
         saveData(formData);
-        clearForm();
     }
     else{
         updateForm();
-        selectedRow = null;
     }
+    clearForm();
 })
 
 function saveData(formData){
@@ -28,6 +27,9 @@ function edit(td){
     selectedRow = td.parentElement.parentElement;
     console.log(selectedRow.cells[0].textContent);
     document.getElementById("name").value = selectedRow.cells[0].textContent;
+    document.getElementById("value").value = selectedRow.cells[1].textContent;
+    document.getElementById("type").value = selectedRow.cells[2].textContent;
+    document.getElementById("time").value = selectedRow.cells[3].textContent;
 
 }
 
@@ -45,7 +47,13 @@ function clearForm(){
     document.getElementById("value").value = "";
     document.getElementById("type").value = "";
     document.getElementById("time").value = "";
-
+}
+function updateForm(formData){
+   selectedRow.cells[0].textContent = document.getElementById("name").value;
+   selectedRow.cells[1].textContent = document.getElementById("value").value;
+   selectedRow.cells[2].textContent = document.getElementById("type").value;
+   selectedRow.cells[3].textContent = document.getElementById("time").value;
+    selectedRow = null;
 
 }
 
