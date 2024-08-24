@@ -26,8 +26,8 @@ function saveData(formData){
 }
 function edit(td){
     selectedRow = td.parentElement.parentElement;
-    console.log(selectedRow[0].textContent);
-    document.getElementById("name").innerText = selectedRow[0].value;
+    console.log(selectedRow.cells[0].textContent);
+    document.getElementById("name").value = selectedRow.cells[0].textContent;
 
 }
 
