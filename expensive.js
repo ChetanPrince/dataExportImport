@@ -1,8 +1,16 @@
 const button = document.getElementById("addExpense");
 button.addEventListener("click", (e)=>{
+    let selectedRow = null;
     e.preventDefault();
     let formData = getValues();
-  saveData(formData);
+    if(selectedRow == null){
+        saveData(formData);
+        clearForm();
+    }
+    else{
+        updateForm();
+        selectedRow = null;
+    }
 })
 
 function saveData(formData){
@@ -16,6 +24,12 @@ function saveData(formData){
     let actionCell = row.insertCell(keys.length);
     actionCell.innerHTML = `<button onClick="edit(this)">Edit</button><button onClick="deleteRow()">Delete</button>`;
 }
+function edit(td){
+    selectedRow = td.parentElement.parentElement;
+    console.log(selectedRow[0].textContent);
+    document.getElementById("name").innerText = selectedRow[0].value;
+
+}
 
 function getValues(){
     return {
@@ -26,5 +40,13 @@ function getValues(){
     };
 }
 
+function clearForm(){
+    document.getElementById("name").value = "";
+    document.getElementById("value").value = "";
+    document.getElementById("type").value = "";
+    document.getElementById("time").value = "";
+
+
+}
 
 
