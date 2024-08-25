@@ -57,16 +57,16 @@ function updateForm(formData) {
 }
 
 document.querySelector('#table tbody').addEventListener('click', (e) => {
+    // Debounce or throttle to prevent rapid successive clicks from triggering multiple times
     if (e.target.classList.contains('edit')) {
-        edit(e.target);
+        requestAnimationFrame(() => edit(e.target)); // Use requestAnimationFrame to allow UI to update
     } else if (e.target.classList.contains('delete')) {
-        deleteRow(e.target);
+        requestAnimationFrame(() => deleteRow(e.target)); // Use requestAnimationFrame to allow UI to update
     }
 });
-
 function deleteRow(td) {
     if (confirm("Are you sure you want to delete this data?")) {
         let row = td.parentElement.parentElement;
-        row.remove();
+        requestAnimationFrame(() => row.remove()); // Defer the row removal to improve performance
     }
 }
