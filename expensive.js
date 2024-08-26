@@ -1,13 +1,14 @@
 const button = document.getElementById("addExpense");
 let selectedRow = null;
 
-document.addEventListener("DOMContentLoaded", loadTableData); // Load data from localStorage on page load
+document.addEventListener("DOMContentLoaded", loadTableData, totalExpenses); // Load data from localStorage on page load
 
 button.addEventListener("click", (e) => {
     e.preventDefault();
     let formData = getValues();
     if (selectedRow == null) {
         saveData(formData);
+        totaExpenses();
     } else {
         updateForm(formData);
     }
@@ -99,4 +100,19 @@ function loadTableData(){
             saveData(item);
         });
     }
+}
+function totaExpenses(){
+    let table = document.getElementById("table").getElementsByTagName("tbody")[0];
+    let rows = table.getElementsByTagName("tr");
+    let total = 0;
+
+    for(let row of rows){
+       let value = parseFloat(row.cells[1].textContent);
+       if(!isNaN(value)){
+        total += value;
+       }
+       
+    }
+    document.getElementById("totalExpenses").textContent = "Total Expenses: $" + total;
+    
 }
