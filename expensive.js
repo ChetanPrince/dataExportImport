@@ -1,6 +1,8 @@
 const button = document.getElementById("addExpense");
 let selectedRow = null;
 
+document.addEventListener("DOMContentLoaded", loadTableData); // Load data from localStorage on page load
+
 button.addEventListener("click", (e) => {
     e.preventDefault();
     let formData = getValues();
@@ -10,6 +12,7 @@ button.addEventListener("click", (e) => {
         updateForm(formData);
     }
     clearForm();
+    updateLocalStorage();
 });
 
 function saveData(formData) {
@@ -54,19 +57,46 @@ function updateForm(formData) {
     selectedRow.cells[2].textContent = formData.type;
     selectedRow.cells[3].textContent = formData.time;
     selectedRow = null;
+    updateLocalStorage();
 }
 
 document.querySelector('#table tbody').addEventListener('click', (e) => {
-    // Debounce or throttle to prevent rapid successive clicks from triggering multiple times
     if (e.target.classList.contains('edit')) {
-        requestAnimationFrame(() => edit(e.target)); // Use requestAnimationFrame to allow UI to update
+        requestAnimationFrame(() => edit(e.target)); 
     } else if (e.target.classList.contains('delete')) {
-        requestAnimationFrame(() => deleteRow(e.target)); // Use requestAnimationFrame to allow UI to update
+        requestAnimationFrame(() => deleteRow(e.target)); 
     }
 });
 function deleteRow(td) {
     if (confirm("Are you sure you want to delete this data?")) {
         let row = td.parentElement.parentElement;
-        requestAnimationFrame(() => row.remove()); // Defer the row removal to improve performance
+        row.remove();
+        updateLocalStorage();
+    }
+}
+
+function updateLocalStorage(){
+    let table = document.getElementById("table").getElementsByTagName("tbody")[0];
+    let rows = table.getElementsByTagName("tr");
+    let data = [];
+    for(let row of rows){
+        let rowData = {
+            name: row.cells[0].textContent,
+            value: row.cells[1].textContent,
+            type: row.cells[2].textContent,
+            time: row.cells[3].textContent
+        };
+        data.push(rowData);
+    }
+    localStorage.setItem("expense", JSON.stringify(data));
+}
+
+function loadTableData(){
+    let data = localStorage.getItem("expense");
+    if (data) {
+        data = JSON.parse(data);
+        data.forEach(item =>{
+            saveData(item);
+        });
     }
 }
