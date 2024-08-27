@@ -1,11 +1,14 @@
 // DOM Elements
 const button = document.getElementById("addExpense");
 const tableBody = document.getElementById("table").getElementsByTagName("tbody")[0];
+const filterButton = document.getElementById("filterButton");
+const categoryFilter = document.getElementById("category");
 let selectedRow = null;
 
 // Event Listeners
 document.addEventListener("DOMContentLoaded", initializeApp);
 button.addEventListener("click", handleFormSubmit);
+filterButton.addEventListener("click", filterExpenses);
 
 // Initialize the application
 function initializeApp() {
@@ -140,152 +143,19 @@ function updateTotalExpenses() {
     document.getElementById("totalExpenses").textContent = "Total Expenses: $" + total.toFixed(2);
 }
 
+// Filter expenses by category
+function filterExpenses() {
+    const selectedCategory = categoryFilter.value;
+    let filteredTotal = 0;
 
+    for (const row of tableBody.rows) {
+        const value = parseFloat(row.cells[1].textContent);
+        const category = row.cells[2].textContent;
 
+        if (category === selectedCategory && !isNaN(value)) {
+            filteredTotal += value;
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//**********---------  the following code is a common approach ---------********
-
-// const button = document.getElementById("addExpense");
-// let selectedRow = null;
-
-// document.addEventListener("DOMContentLoaded", ()=>{
-//     loadTableData();
-//     totalExpenses();
-// }); // Load data from localStorage on page load
-
-// button.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     let formData = getValues();
-//     if (selectedRow == null) {
-//         saveData(formData);
-//     } else {
-//         updateForm(formData);
-//     }
-//     clearForm();
-//     updateLocalStorage();
-//     totalExpenses();
-// });
-
-// function saveData(formData) {
-//     let table = document.getElementById("table").getElementsByTagName("tbody")[0];
-//     let row = table.insertRow(table.length);
-//     let keys = ["name", "value", "type", "time"];
-//     keys.forEach((key, index) => {
-//         let td = row.insertCell(index);
-//         td.innerHTML = formData[key];
-//     });
-//     let actionCell = row.insertCell(keys.length);
-//     actionCell.innerHTML = `<button class="edit" onClick="edit(this)">Edit</button> <button class="delete" onClick="deleteRow(this)">Delete</button>`;
-// }
-
-// function edit(td) {
-//     selectedRow = td.parentElement.parentElement;
-//     document.getElementById("name").value = selectedRow.cells[0].textContent;
-//     document.getElementById("value").value = selectedRow.cells[1].textContent;
-//     document.getElementById("type").value = selectedRow.cells[2].textContent;
-//     document.getElementById("time").value = selectedRow.cells[3].textContent;
-// }
-
-// function getValues() {
-//     return {
-//         name: document.getElementById("name").value,
-//         value: document.getElementById("value").value,
-//         type: document.getElementById("type").value,
-//         time: document.getElementById("time").value
-//     };
-// }
-
-// function clearForm() {
-//     document.getElementById("name").value = "";
-//     document.getElementById("value").value = "";
-//     document.getElementById("type").value = "";
-//     document.getElementById("time").value = "";
-// }
-
-// function updateForm(formData) {
-//     selectedRow.cells[0].textContent = formData.name;
-//     selectedRow.cells[1].textContent = formData.value;
-//     selectedRow.cells[2].textContent = formData.type;
-//     selectedRow.cells[3].textContent = formData.time;
-//     selectedRow = null;
-//     updateLocalStorage();
-//     totalExpenses();
-// }
-
-// function deleteRow(td) {
-//     if (confirm("Are you sure you want to delete this data?")) {
-//         let row = td.parentElement.parentElement;
-//         row.remove();
-//         updateLocalStorage();
-//         totalExpenses();
-//     }
-// }
-
-// function updateLocalStorage(){
-//     let table = document.getElementById("table").getElementsByTagName("tbody")[0];
-//     let rows = table.getElementsByTagName("tr");
-//     let data = [];
-//     for(let row of rows){
-//         let rowData = {
-//             name: row.cells[0].textContent,
-//             value: row.cells[1].textContent,
-//             type: row.cells[2].textContent,
-//             time: row.cells[3].textContent
-//         };
-//         data.push(rowData);
-//     }
-//     localStorage.setItem("expense", JSON.stringify(data));
-// }
-
-// function loadTableData(){
-//     let data = localStorage.getItem("expense");
-//     if (data) {
-//         data = JSON.parse(data);
-//         data.forEach(item =>{
-//             saveData(item);
-//         });
-//     }
-// }
-// function totalExpenses(){
-//     let table = document.getElementById("table").getElementsByTagName("tbody")[0];
-//     let rows = table.getElementsByTagName("tr");
-//     let total = 0;
-
-//     for(let row of rows){
-//        let value = parseFloat(row.cells[1].textContent);
-//        if(!isNaN(value)){
-//         total += value;
-//        }
-       
-//     }
-//     document.getElementById("totalExpenses").textContent = "Total Expenses: $" + total;
-    
-// }
+    document.getElementById("filteredExpenses").textContent = `Total ${selectedCategory} Expenses: $${filteredTotal.toFixed(2)}`;
+}

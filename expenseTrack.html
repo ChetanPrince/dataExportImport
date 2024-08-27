@@ -27,15 +27,19 @@
     </table>
     <div class="output">
 
-        <h2 id="totalExpenses"></h2>
-        <select name="filter Category" id="category">
-            <option value="" disabled selected>Filter category</option>
-            <option value="Transport">Transport</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Education">Education</option>
-            <option value="Health">Health </option>
-        </select>
+        <h3 id="totalExpenses"></h3>
+        <div class="filterExpenses">
+            <label for="category">Filter By Category:&nbsp;&nbsp;&nbsp;</label>
+            <select name="filter Category" id="category">
+                <option value="" disabled selected>All</option>
+                <option value="Transport">Transport</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health </option>
+            </select>
+        </div>
     </div>
+    <div id="filteredExpenses"></div>
 
 
 
