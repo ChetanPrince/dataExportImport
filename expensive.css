@@ -65,7 +65,15 @@ button:active{
             padding: 6px;
             border: 1px solid black;
          } 
-
+.output{
+    width: 80%;
+    margin: auto;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 
