@@ -9,40 +9,51 @@
 <body>
 
     <header class="inputs">
-        <input id="name" class="common" type="text"placeholder="Expense Name">
-        <input id="value" class="common" type="number"placeholder="Expense Amount">
-        <select id="type" class="common"  name="Category"> 
-                        <option value="" disabled selected>Select Category</option>
-                        <option value="Food">Food</option>
+        <input id="name" class="common" type="text" placeholder="Expense Name">
+        <input id="value" class="common" type="number" placeholder="Expense Amount">
+        <select id="type" class="common" name="Category"> 
+            <option value="" disabled selected>Select Category</option>
+            <option value="Food">Food</option>
             <option value="Transport">Transport</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Education">Education</option>
-            <option value="Health">Health </option>
+            <option value="Health">Health</option>
         </select>
         <input id="time" class="common" type="date" name="Date">
         <button id="addExpense" type="submit">Add Expense</button>
     </header>
+
     <table id="table">
+        <thead>
+            <tr>
+                <th>Expense Name</th>
+                <th>Expense Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         <tbody></tbody>
     </table>
-    <div class="output">
 
-        <h3 id="totalExpenses"></h3>
+    <div class="output">
+        <h3 id="totalExpenses">Total Expenses: $0.00</h3>
         <div class="filterExpenses">
-            <label for="category">Filter By Category:&nbsp;&nbsp;&nbsp;</label>
-            <select name="filter Category" id="category">
+            <label for="categoryFilter">Filter By Category:&nbsp;&nbsp;&nbsp;</label>
+            <select name="filterCategory" id="categoryFilter">
                 <option value="" disabled selected>All</option>
+                <option value="Food">Food</option>
                 <option value="Transport">Transport</option>
                 <option value="Entertainment">Entertainment</option>
                 <option value="Education">Education</option>
-                <option value="Health">Health </option>
+                <option value="Health">Health</option>
             </select>
+            <button id="filterButton">Filter</button>
         </div>
+        <p id="filteredExpenses">Total [Selected Category] Expenses: $0.00</p>
     </div>
-    <div id="filteredExpenses"></div>
 
-
-
-    <script src="expensive.js"></script>
+    <!-- <script src="expensive.js"></script> -->
+    <script src="./expense.js"></script>
 </body>
 </html>
